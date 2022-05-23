@@ -1,0 +1,5 @@
+<div class="publicacion" *ngFor="let publicacion of publicaciones">
+    {{publicacion.nombre}}
+
+    <button (click)="onClickDelete(publicacion)">Borrar</button>
+</div>

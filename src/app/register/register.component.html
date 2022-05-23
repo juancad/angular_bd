@@ -1,30 +1,28 @@
-<body>
-    <app-topbuttons></app-topbuttons>
-    <mat-card>
-        <h2>Bienvenido.</h2>
-        <h3>¿No te has registrado todavía?</h3>
-        <form [formGroup]="form">
-            <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput formControlName="email">
-                <mat-error
-                    *ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">
-                    Dirección de correo electrónico no válida.</mat-error>
-                <mat-error *ngIf="form.controls['email'].hasError('required')">Por favor, introduce una dirección de correo electrónico.</mat-error>
-            </mat-form-field>
-            <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Password</mat-label>
-                <input type="password" matInput formControlName="password">
-                <mat-error
-                    *ngIf="form.controls['password'].hasError('minlength') && !form.controls['password'].hasError('required')">
-                    La contraseña debe contener más de 6 caracteres.</mat-error>
-                <mat-error *ngIf="form.controls['password'].hasError('required')">Por favor, introduce una contraseña.
-                </mat-error>
-            </mat-form-field>
-            <br /><br />
-            <div class="buttons"><button mat-raised-button color="primary" [disabled]="form.invalid"
-                    (click)="onSubmit()">Registrarse</button></div><br/>
-            <div class="info">¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a></div>
-        </form>
-    </mat-card>
-</body>
+<app-topbuttons></app-topbuttons>
+<mat-card>
+    <h2>Bienvenido.</h2>
+    <h3>¿No te has registrado todavía?</h3>
+    <form [formGroup]="form">
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email">
+            <mat-error *ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">
+                Dirección de correo electrónico no válida.</mat-error>
+            <mat-error *ngIf="form.controls['email'].hasError('required')">Por favor, introduce una dirección de correo
+                electrónico.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+            <mat-error
+                *ngIf="form.controls['password'].hasError('minlength') && !form.controls['password'].hasError('required')">
+                La contraseña debe contener más de 6 caracteres.</mat-error>
+            <mat-error *ngIf="form.controls['password'].hasError('required')">Por favor, introduce una contraseña.
+            </mat-error>
+        </mat-form-field>
+        <br /><br />
+        <div class="buttons"><button mat-raised-button color="primary" [disabled]="form.invalid"
+                (click)="onSubmit()">Registrarse</button></div><br />
+        <div class="info">¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a></div>
+    </form>
+</mat-card>
