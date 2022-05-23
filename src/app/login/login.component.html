@@ -1,0 +1,33 @@
+<body>
+    <app-topbuttons></app-topbuttons>
+    <mat-card>
+        <h2>Inicio de sesión.</h2>
+        <h3>Ingresa los datos del formulario para iniciar sesión.</h3>
+        <form [formGroup]="form">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email">
+                <mat-error *ngIf="form.controls['email'].hasError('required')">Por favor, introduce una dirección de
+                    correo
+                    electrónico.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password">
+                <mat-error *ngIf="form.controls['password'].hasError('required')">Por favor, introduce una contraseña.
+                </mat-error>
+            </mat-form-field>
+            <br /><br />
+            <div class="buttons">
+                <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()">Iniciar
+                    sesión</button>
+                <br />{{mensaje}}
+                <br /><br />
+                <button mat-stroked-button (click)="onClick()"><img src="../../assets/images/google.png" width="20px">&nbsp;Iniciar sesión con
+                    google</button>
+                <br /><br />
+            </div>
+        </form>
+    </mat-card>
+</body>

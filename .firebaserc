@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angularbd-84df1": {
+      "hosting": {
+        "angular_bd": [
+          "angularbd-84df1"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angularbd-84df1"
+  }
+}
