@@ -1,7 +1,12 @@
-<mat-toolbar color="primary" class="flexExpand">
-    <h1><a [routerLink]="'/'" class="title">Título</a></h1>
-    <div class="links">
-        <a mat-list-item [routerLink]="''" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Enlace 1</a>&nbsp;
-        <a mat-list-item [routerLink]="''" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Enlace 2</a>
-    </div>
+<mat-toolbar color="primary">
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/profile'" routerLinkActive="active">Editar perfil</button>
+        <button mat-menu-item (click)="logout()">Cerrar sesión</button>
+    </mat-menu>
+
+    <span>My App</span>
+    <span class="example-spacer"></span>
 </mat-toolbar>

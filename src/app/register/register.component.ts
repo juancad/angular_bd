@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { switchMap } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -11,22 +12,29 @@ import { UserService } from '../user.service';
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private userService: UserService, private fb: FormBuilder, private router: Router) {
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
   }
 
   ngOnInit(): void {
     this.form = this.fb.group({
+      nombre: ['', [Validators.required, Validators.maxLength(30)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     })
   }
-  
+
   onSubmit() {
-    this.userService.register(this.form.value)
-    .then(response => {
-      console.log(response);
-      this.router.navigate(['/login']);
-    })
-    .catch(error => console.log(error));
+    const { nombre, email, password } = this.form.value;
+    this.authService.register(email, password)
+      .subscribe(() => {
+        this.router.navigate(['/login']);
+      });;
+  }
+
+  onClickGoogle() {
+    this.authService.loginWithGoogle()
+      .subscribe(() => {
+        this.router.navigate(['/main']);
+      });
   }
 }

@@ -4,6 +4,13 @@
     <h3>¿No te has registrado todavía?</h3>
     <form [formGroup]="form">
         <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input type="text" matInput formControlName="nombre">
+            <mat-error *ngIf="form.controls['nombre'].hasError('maxlength') && !form.controls['nombre'].hasError('required')">
+                Por favor, introduce un nombre que no tenga más de 30 caracteres.</mat-error>
+            <mat-error *ngIf="form.controls['nombre'].hasError('required')">Por favor, introduce un nombre.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
             <mat-label>Email</mat-label>
             <input type="email" matInput formControlName="email">
             <mat-error *ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">
@@ -24,5 +31,9 @@
         <div class="buttons"><button mat-raised-button color="primary" [disabled]="form.invalid"
                 (click)="onSubmit()">Registrarse</button></div><br />
         <div class="info">¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a></div>
+        <br />
+        <div class="buttons"><button mat-stroked-button (click)="onClickGoogle()"><img src="../../assets/images/google.png"
+                width="20px">&nbsp;Registrarse con google</button></div>
+        <br />
     </form>
 </mat-card>

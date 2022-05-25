@@ -21,6 +21,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 import { FooterComponent } from './footer/footer.component';
 import { TopbuttonsComponent } from './topbuttons/topbuttons.component';
@@ -28,6 +30,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { FormComponent } from './form/form.component';
 import { ListComponent } from './list/list.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { ListComponent } from './list/list.component';
     TopbuttonsComponent,
     NavbarComponent,
     FormComponent,
-    ListComponent
+    ListComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +59,8 @@ import { ListComponent } from './list/list.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

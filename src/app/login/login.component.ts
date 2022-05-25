@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   mensaje!: string;
 
-  constructor(private userService: UserService, private fb: FormBuilder, private router: Router) {
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -23,23 +23,17 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.login(this.form.value)
-    .then(response => {
-      console.log(response);
+    const { email, password } = this.form.value;
+    this.authService.login(email, password).pipe(
+    ).subscribe(() => {
       this.router.navigate(['/main']);
-    })
-    .catch(error => {
-      console.log(error);
-      this.mensaje = "No se ha podido iniciar sesión con esas credenciales."
     });
   }
 
-  onClick() {
-    this.userService.loginWithGoogle()
-    .then(response => {
-      console.log(response);
+  onClickGoogle() {
+    this.authService.loginWithGoogle().pipe(
+    ).subscribe(() => {
       this.router.navigate(['/main']);
-    })
-    .catch(error => console.log(error))
+    });
   }
 }

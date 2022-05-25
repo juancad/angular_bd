@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Publicacion from '../interfaces/publicacion';
 import { PublicacionesService } from '../publicaciones.service';
+import { getAuth } from "firebase/auth";
 
 @Component({
   selector: 'app-list',
@@ -9,8 +10,10 @@ import { PublicacionesService } from '../publicaciones.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  publicaciones!: Publicacion[];
-  
+  user = getAuth().currentUser;
+  mensaje!: String;
+  publicaciones: Publicacion[] = [];
+
   constructor(private publicacionesService: PublicacionesService, private router: Router) {
   }
 

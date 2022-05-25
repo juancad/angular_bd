@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<mat-card>
+    <form [formGroup]="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Imagen</mat-label>
+            <input matInput formControlName="imagen">
+        </mat-form-field>
+        <br />
+        <button mat-raised-button color="accent" (click)="goBack()">Cancelar</button>&nbsp;
+        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="saveProfile()">Editar pefil</button>
+    </form>
+    {{mensaje}}
+</mat-card>
