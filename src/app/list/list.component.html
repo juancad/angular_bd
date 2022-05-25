@@ -1,4 +1,13 @@
-<div class="publicacion" *ngFor="let publicacion of publicaciones">
-    {{publicacion.nombre}}
-    <button (click)="onClickDelete(publicacion)">Borrar</button>
-</div>
+<mat-card class="publicacion" *ngFor="let publicacion of publicaciones">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image" style="background: url({{user?.photoURL}})"></div>
+      <mat-card-title>{{publicacion.nombre}}</mat-card-title>
+      <mat-card-subtitle>Publicado por: <span>{{user?.displayName}}</span></mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{publicacion.imagen}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        {{publicacion.contenido}}
+      </p>
+    </mat-card-content>
+  </mat-card>

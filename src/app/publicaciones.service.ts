@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { collection, Firestore, addDoc, collectionData, doc, deleteDoc } from '@angular/fire/firestore';
+import { collection, Firestore, addDoc, collectionData, doc, deleteDoc, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import Publicacion from './interfaces/publicacion';
-import { getDatabase, ref, set } from "firebase/database";
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +23,8 @@ export class PublicacionesService {
   }
 
   //obtiene todas las publicaciones de la base de datos
-  getPublicaciones(): Observable<Publicacion[]> {
-    const pubRef = collection(this.firestore, 'publicaciones');
+  getPublicaciones(uid: string): Observable<Publicacion[]> {
+    const pubRef = query(collection(this.firestore, "publicaciones"), where("uid", "==", uid));
     return collectionData(pubRef, {idField: 'id'}) as Observable<Publicacion[]>; 
   }
 }

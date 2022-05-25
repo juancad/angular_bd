@@ -8,11 +8,9 @@
             <mat-label>Contenido</mat-label>
             <textarea matInput formControlName="contenido"></textarea>
         </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Imagen</mat-label>
-            <input matInput formControlName="imagen">
-        </mat-form-field>
-        <br />
+        <br/>
+        <input type="file" accept=".png, .jpg, .pjeg" formControlName="imagen" (change)="uploadImagen($event)">
+        <br /><br />
         <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()">Añadir publicación</button>
     </form>
 </mat-card>

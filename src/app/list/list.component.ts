@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.publicacionesService.getPublicaciones().subscribe(publicaciones => {
+    this.publicacionesService.getPublicaciones(this.user?.uid!).subscribe(publicaciones => {
       this.publicaciones = publicaciones;
     });
   }

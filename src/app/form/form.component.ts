@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import Publicacion from '../interfaces/publicacion';
 import { PublicacionesService } from '../publicaciones.service';
 import { getAuth } from "firebase/auth";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -36,6 +37,10 @@ export class FormComponent implements OnInit {
     }
     const response = await this.publicacionesService.addPublicacion(publicacion);
     console.log(response);
-
   }
+
+  uploadImagen(event: any) {
+    
+  }
+
 }
