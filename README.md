@@ -10,7 +10,7 @@
 Se trata de realizar una aplicación en angular en el que haya comunicación entre componentes padres e hijos. 
 
 ### 1.1 Link web <a name="link-web"/>
-https://juancad.github.io/angular_todo/
+https://juancad.github.io/angular_bd/
 
 ## 2. Requisitos<a name="requisitos"/>
 Para poder ejecutar el proyecto será necesario:
