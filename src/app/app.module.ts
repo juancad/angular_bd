@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
+import { DialogDelete } from './list/list.component';
+import { DialogEdit } from './list/list.component';
 
 import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
@@ -23,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { FooterComponent } from './footer/footer.component';
 import { TopbuttonsComponent } from './topbuttons/topbuttons.component';
@@ -32,6 +35,7 @@ import { FormComponent } from './form/form.component';
 import { ListComponent } from './list/list.component';
 import { ProfileComponent } from './profile/profile.component';
 
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,9 @@ import { ProfileComponent } from './profile/profile.component';
     NavbarComponent,
     FormComponent,
     ListComponent,
-    ProfileComponent
+    ProfileComponent,
+    DialogEdit,
+    DialogDelete
   ],
   imports: [
     BrowserModule,
@@ -61,6 +67,8 @@ import { ProfileComponent } from './profile/profile.component';
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
+    MatDialogModule,
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

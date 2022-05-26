@@ -6,7 +6,8 @@
         <mat-form-field class="full-width" appearance="fill">
             <mat-label>Nombre</mat-label>
             <input type="text" matInput formControlName="nombre">
-            <mat-error *ngIf="form.controls['nombre'].hasError('maxlength') && !form.controls['nombre'].hasError('required')">
+            <mat-error
+                *ngIf="form.controls['nombre'].hasError('maxlength') && !form.controls['nombre'].hasError('required')">
                 Por favor, introduce un nombre que no tenga más de 30 caracteres.</mat-error>
             <mat-error *ngIf="form.controls['nombre'].hasError('required')">Por favor, introduce un nombre.</mat-error>
         </mat-form-field>
@@ -30,10 +31,12 @@
         <br /><br />
         <div class="buttons"><button mat-raised-button color="primary" [disabled]="form.invalid"
                 (click)="onSubmit()">Registrarse</button></div><br />
+        {{mensaje}}<br />
         <div class="info">¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a></div>
         <br />
-        <div class="buttons"><button mat-stroked-button (click)="onClickGoogle()"><img src="https://firebasestorage.googleapis.com/v0/b/angularbd-84df1.appspot.com/o/google.png?alt=media&token=adc6dcc4-57ec-46ae-88d6-17aa3d21aabd"
-                width="20px">&nbsp;Registrarse con google</button></div>
+        <div class="buttons"><button mat-stroked-button (click)="onClickGoogle()"><img
+                    src="https://firebasestorage.googleapis.com/v0/b/angularbd-84df1.appspot.com/o/google.png?alt=media&token=adc6dcc4-57ec-46ae-88d6-17aa3d21aabd"
+                    width="20px">&nbsp;Registrarse con google</button></div>
         <br />
     </form>
 </mat-card>

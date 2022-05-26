@@ -1,4 +1,6 @@
-<mat-card>
+<mat-dialog-content class="mat-typography">
+  Modifica los datos de la inscripción:
+  <br /><br />
     <form [formGroup]="form">
         <mat-form-field appearance="fill">
             <mat-label>Nombre</mat-label>
@@ -11,6 +13,9 @@
         <br/>
         <input type="file" accept=".png, .jpg, .pjeg" formControlName="imagen" (change)="selectImage($event)">
         <br /><br />
-        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()">Añadir publicación</button>
     </form>
-</mat-card>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true">Cancelar</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="edit()">Modificar</button>
+</mat-dialog-actions>

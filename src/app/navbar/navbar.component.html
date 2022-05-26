@@ -3,6 +3,7 @@
         <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/main'" routerLinkActive="active">Inicio</button>
         <button mat-menu-item [routerLink]="'/profile'" routerLinkActive="active">Editar perfil</button>
         <button mat-menu-item (click)="logout()">Cerrar sesión</button>
     </mat-menu>

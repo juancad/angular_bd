@@ -1,13 +1,21 @@
 <mat-card class="publicacion" *ngFor="let publicacion of publicaciones">
-    <mat-card-header>
-      <div mat-card-avatar class="header-image" style="background: url({{user?.photoURL}})"></div>
-      <mat-card-title>{{publicacion.nombre}}</mat-card-title>
-      <mat-card-subtitle>Publicado por: <span>{{user?.displayName}}</span></mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{publicacion.imagen}}" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <p>
-        {{publicacion.contenido}}
-      </p>
-    </mat-card-content>
-  </mat-card>
+  <mat-card-header>
+    <div mat-card-avatar class="header-image" style="background: url({{user?.photoURL}})"></div>
+    <mat-card-title>{{publicacion.nombre}}</mat-card-title>
+    <mat-card-subtitle>Publicado por: <span>{{user?.displayName}}</span></mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{publicacion.imagen}}" alt="{{publicacion.nombre}}">
+  <mat-card-content>
+    <p>
+      {{publicacion.contenido}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="warn" (click)="onClickDelete(publicacion)">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-button color="secondary" (click)="openEditDialog(publicacion)">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

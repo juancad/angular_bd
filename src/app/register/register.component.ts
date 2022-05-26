@@ -11,7 +11,8 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
-
+  mensaje!: string;
+  
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
   }
 
@@ -28,7 +29,8 @@ export class RegisterComponent implements OnInit {
     this.authService.register(email, password)
       .subscribe(() => {
         this.router.navigate(['/login']);
-      });;
+      });
+    this.mensaje = "El usuario ya está registrado";
   }
 
   onClickGoogle() {
