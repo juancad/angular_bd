@@ -16,6 +16,8 @@ export class FormComponent implements OnInit {
   user = getAuth().currentUser;
   mensaje!: String;
   selectedFile!: File;
+  isSelected = false;
+  isUpload = false;
   downloadURL!: string;
 
   constructor(private publicacionesService: PublicacionesService, private fb: FormBuilder, private router: Router, private storage: AngularFireStorage) { }
@@ -24,19 +26,21 @@ export class FormComponent implements OnInit {
     this.form = this.fb.group({
       nombre: ['', [Validators.required, Validators.maxLength(50)]],
       contenido: [''],
-      imagen: ['', [Validators.required]],
+      imagen: [''],
     })
   }
 
   async onSubmit() {
     console.log(this.form.value);
-    //sube la imagen a la bd
-    this.uploadImage();
+    let url = "";
+    if(this.downloadURL!=null) {
+      url=this.downloadURL;
+    }
     //guarda la publicación del formulario
     let publicacion: Publicacion = {
       nombre: this.form.value.nombre,
       contenido: this.form.value.contenido,
-      imagen: this.downloadURL,
+      imagen: url,
       uid: this.user?.uid!,
     }
     //añade la publicación en la bd
@@ -47,15 +51,18 @@ export class FormComponent implements OnInit {
 
   selectImage(event: any) {
     this.selectedFile = event.target.files[0];
+    this.isSelected = true;
   }
 
   uploadImage() {
     const filePath = `images/${this.user?.uid}/${Date.now()}`;
-    const fileRef = this.storage.ref(filePath);
     //sube la imagen y guarda el url
-    this.storage.upload(filePath, this.selectedFile).then(rst => {
+
+    const uploadTask = this.storage.upload(filePath, this.selectedFile).then(rst => {
       rst.ref.getDownloadURL().then(url => {
         this.downloadURL = url;
+        this.mensaje = "Se ha subido correctamente la imagen";
+        this.isUpload = true;
       })
     })
   }

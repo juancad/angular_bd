@@ -7,7 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { DialogDelete } from './list/list.component';
 import { DialogEdit } from './list/list.component';
-
+import { ListComponent } from './list/list.component';
 import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -32,7 +32,7 @@ import { TopbuttonsComponent } from './topbuttons/topbuttons.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { FormComponent } from './form/form.component';
-import { ListComponent } from './list/list.component';
+
 import { ProfileComponent } from './profile/profile.component';
 
 import { AngularFireModule } from '@angular/fire/compat';
@@ -47,10 +47,10 @@ import { AngularFireModule } from '@angular/fire/compat';
     TopbuttonsComponent,
     NavbarComponent,
     FormComponent,
-    ListComponent,
     ProfileComponent,
+    ListComponent,
+    DialogDelete,
     DialogEdit,
-    DialogDelete
   ],
   imports: [
     BrowserModule,

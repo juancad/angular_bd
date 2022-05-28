@@ -4,7 +4,7 @@ import Publicacion from '../interfaces/publicacion';
 import { PublicacionesService } from '../publicaciones.service';
 import { getAuth } from "firebase/auth";
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
@@ -52,7 +52,9 @@ export class DialogEdit implements OnInit {
   publicacion!: Publicacion;
   form!: FormGroup;
   selectedFile!: File;
+  isSelected = false;
   downloadURL!: string;
+  mensaje!: String;
   user = getAuth().currentUser;
 
   constructor(private publicacionesService: PublicacionesService, private storage: AngularFireStorage) {
@@ -68,20 +70,28 @@ export class DialogEdit implements OnInit {
 
   selectImage(event: any) {
     this.selectedFile = event.target.files[0];
+    this.isSelected = true;
   }
 
   uploadImage() {
     const filePath = `images/${this.user?.uid}/${Date.now()}`;
-    const fileRef = this.storage.ref(filePath);
     //sube la imagen y guarda el url
-    this.storage.upload(filePath, this.selectedFile).then(rst => {
+
+    const uploadTask = this.storage.upload(filePath, this.selectedFile).then(rst => {
       rst.ref.getDownloadURL().then(url => {
         this.downloadURL = url;
+        this.mensaje = "Se ha subido correctamente la imagen";
       })
     })
   }
 
   edit() {
+    if(this.downloadURL!=null) {
+      this.publicacion.imagen = this.downloadURL.toString();
+    }
+    this.publicacion.nombre = this.form.value.nombre;
+    this.publicacion.contenido = this.form.value.contenido;
+    this.publicacionesService.updatePublicacion(this.publicacion);
   }
 }
 

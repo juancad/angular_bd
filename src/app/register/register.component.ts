@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { switchMap } from 'rxjs';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -30,7 +29,6 @@ export class RegisterComponent implements OnInit {
       .subscribe(() => {
         this.router.navigate(['/login']);
       });
-    this.mensaje = "El usuario ya está registrado";
   }
 
   onClickGoogle() {

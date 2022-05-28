@@ -13,9 +13,11 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 export class ProfileComponent implements OnInit {
   form!: FormGroup;
   user = getAuth().currentUser;
-  mensaje!: String;
   selectedFile!: File;
   downloadURL!: string;
+  isSelected = false;
+  mensaje_img!: String;
+  mensaje_profile!: String;
 
   constructor(private fb: FormBuilder, private router: Router, private location: Location, private storage: AngularFireStorage) { }
 
@@ -28,19 +30,34 @@ export class ProfileComponent implements OnInit {
   }
 
   saveProfile() {
-    this.uploadImage();
-    updateProfile(this.user!, {
-      displayName: this.form.value.nombre, photoURL: this.downloadURL.toString()
-    }).then(() => {
-      this.mensaje = "Se ha actualizado correctamente el perfil.";
-    }).catch((error) => {
-      this.mensaje = "No se ha podido actualizar correctamente el perfil."
-    });
-    updateEmail(this.user!, this.form.value.email).then(() => {
-      this.mensaje = "Se ha actualizado correctamente el perfil.";
-    }).catch((error) => {
-      this.mensaje = "No se ha podido actualizar correctamente el perfil."
-    });
+    if (this.selectedFile != null) {
+      updateProfile(this.user!, {
+        displayName: this.form.value.nombre, photoURL: this.downloadURL.toString()
+      }).then(() => {
+        this.mensaje_profile = "Se ha actualizado correctamente el perfil.";
+      }).catch((error) => {
+        this.mensaje_profile = "No se ha podido actualizar correctamente el perfil."
+      });
+      updateEmail(this.user!, this.form.value.email).then(() => {
+        this.mensaje_profile = "Se ha actualizado correctamente el perfil.";
+      }).catch((error) => {
+        this.mensaje_profile = "No se ha podido actualizar correctamente el perfil."
+      });
+    }
+    else {
+      updateProfile(this.user!, {
+        displayName: this.form.value.nombre,
+      }).then(() => {
+        this.mensaje_profile = "Se ha actualizado correctamente el perfil.";
+      }).catch((error) => {
+        this.mensaje_profile = "No se ha podido actualizar correctamente el perfil."
+      });
+      updateEmail(this.user!, this.form.value.email).then(() => {
+        this.mensaje_profile = "Se ha actualizado correctamente el perfil.";
+      }).catch((error) => {
+        this.mensaje_profile = "No se ha podido actualizar correctamente el perfil."
+      });
+    }
   }
 
   goBack() {
@@ -49,15 +66,17 @@ export class ProfileComponent implements OnInit {
 
   selectImage(event: any) {
     this.selectedFile = event.target.files[0];
+    this.isSelected = true;
   }
 
   uploadImage() {
     const filePath = `images/${this.user?.uid}/${Date.now()}`;
-    const fileRef = this.storage.ref(filePath);
     //sube la imagen y guarda el url
-    this.storage.upload(filePath, this.selectedFile).then(rst => {
+
+    const uploadTask = this.storage.upload(filePath, this.selectedFile).then(rst => {
       rst.ref.getDownloadURL().then(url => {
         this.downloadURL = url;
+        this.mensaje_img = "Se ha subido correctamente la imagen";
       })
     })
   }

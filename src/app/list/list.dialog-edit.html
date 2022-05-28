@@ -13,6 +13,10 @@
         <br/>
         <input type="file" accept=".png, .jpg, .pjeg" formControlName="imagen" (change)="selectImage($event)">
         <br /><br />
+        <button mat-stroked-button color="primary" [disabled]="!isSelected" (click)="uploadImage()">Subir imagen</button>
+        <br />
+        {{mensaje}}
+        <br /><br />
     </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

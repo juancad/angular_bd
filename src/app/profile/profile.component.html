@@ -11,10 +11,14 @@
         </mat-form-field>
         <br/>
         <input type="file" accept=".png, .jpg, .pjeg" formControlName="imagen" (change)="selectImage($event)">
+        <br/><br/>
+        <button mat-stroked-button color="primary" [disabled]="!isSelected" (click)="uploadImage()">Subir imagen</button>
+        <br />
+        {{mensaje_img}}
         <br /><br />
         <br />
         <button mat-raised-button color="accent" (click)="goBack()">Volver</button>&nbsp;
         <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="saveProfile()">Editar pefil</button>
     </form>
-    {{mensaje}}
+    {{mensaje_profile}}
 </mat-card>

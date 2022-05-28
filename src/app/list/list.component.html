@@ -1,6 +1,7 @@
-<mat-card class="publicacion" *ngFor="let publicacion of publicaciones">
+<mat-card class="publicaciones" *ngFor="let publicacion of publicaciones">
   <mat-card-header>
-    <div mat-card-avatar class="header-image" style="background: url({{user?.photoURL}})"></div>
+    <div mat-card-avatar class=" header-image" style="background: url({{user?.photoURL}})">
+    </div>
     <mat-card-title>{{publicacion.nombre}}</mat-card-title>
     <mat-card-subtitle>Publicado por: <span>{{user?.displayName}}</span></mat-card-subtitle>
   </mat-card-header>
