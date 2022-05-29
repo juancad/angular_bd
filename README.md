@@ -38,13 +38,13 @@ El usuario puede editar su perfil, cambiando su nombre de usuario, correo electr
 La aplicación es responsive, para ello se ha hecho uso del [Grid system de Boostrap](https://getbootstrap.com/docs/4.0/layout/grid/).
 
 Los componentes de la aplicación son los siguientes:
-· navbar y footer: contienen la barra de navegación de la aplicación y el footer.
-· login y register: para el inicio de sesión y el registro.
-· topbuttons: contiene botones que llevan al login y registro.
-· form: contiene el formulario para crear una publicación.
-· list: muestra la lista de publicaciones de usuario que haya iniciado sesión.
-· profile: formulario para editar el perfil del usuario
-· main: muestra form y list (para poder crear una publicación y para ver la lista de publicaciones).
+- navbar y footer: contienen la barra de navegación de la aplicación y el footer.
+- login y register: para el inicio de sesión y el registro.
+- topbuttons: contiene botones que llevan al login y registro.
+- form: contiene el formulario para crear una publicación.
+- list: muestra la lista de publicaciones de usuario que haya iniciado sesión.
+- profile: formulario para editar el perfil del usuario
+- main: muestra form y list (para poder crear una publicación y para ver la lista de publicaciones).
 
 En la carpeta interfaces se ha creado la interface Publicacion, que contiene los atributos de una publicación en la aplicación (id de la publicación, nombre, contenido, imagen y uid del usuario que ha creado la publicación).
 
