@@ -39,6 +39,8 @@ La aplicación es responsive, para ello se ha hecho uso del [Grid system de Boos
 
 ## 5. Referencias
 [Firebase: Administra usuarios en Firebase](https://firebase.google.com/docs/auth/web/manage-users?hl=es#web-version-9_5)
+
 [Firebase: Sube archivos con Cloud Storage en la web](https://firebase.google.com/docs/storage/web/upload-files?hl=es)
+
 [Firestore: Consultar y filtrar datos](https://cloud.google.com/firestore/docs/query-data/queries?hl=es-419)
 
